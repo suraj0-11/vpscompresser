@@ -168,7 +168,7 @@ async def something():
                     else:
                         dl, file = QUEUE[list(QUEUE.keys())[0]]
                         tt = time.time()
-                        dl = "downloads/" + dl
+                        dl = " " + dl
                         with open(dl, "wb") as f:
                             ok = await download_file(
                                 client=bot,
@@ -180,7 +180,7 @@ async def something():
                                         t,
                                         e,
                                         tt,
-                                        f"**📥 Downloading**\n__{dl.replace(f'downloads/', '')}__",
+                                        f"**📥 Downloading**\n__{dl.replace(f' ', '')}__",
                                     )
                                 ),
                             )
@@ -191,7 +191,7 @@ async def something():
                 es = dt.now()
                 kk = dl.split("/")[-1]
                 aa = kk.split(".")[-1]
-                newFile = dl.replace(f"downloads/", "").replace(f"_", " ")
+                newFile = dl.replace(f" ", "").replace(f"_", " ")
                 rr = "encode"
                 bb = kk.replace(f".{aa}", ".mkv")
                 out = f"{rr}/{bb}"
@@ -231,7 +231,7 @@ async def something():
                         file=f,
                         name=out,
                         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                            progress(d, t, nnn, ttt, f"**📤 Uploading**\n__{out.replace(f'encode/', '')}__")
+                            progress(d, t, nnn, ttt, f"**📤 Uploading**\n__{out.replace(f' ', '')}__")
                         ),
                     )
                 await nnn.delete()
